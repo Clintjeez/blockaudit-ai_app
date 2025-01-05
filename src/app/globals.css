@@ -20,3 +20,10 @@ body {
   background-image: url('/bg.svg');
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.glass-bg {
+  background: rgba(75, 75, 75, 0.42);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+}
