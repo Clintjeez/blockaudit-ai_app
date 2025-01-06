@@ -2,7 +2,8 @@
 import ContractInput from '@/components/ContractInput';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
+import ResultModal from '@/components/ResultModal';
+import { analyzeContract } from '@/utils/ai-prompts';
 import { useState } from 'react';
 
 export default function Home() {
@@ -11,7 +12,10 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const analyze = async () => {};
+  const analyze = async () => {
+    setIsModalOpen(true);
+    await analyzeContract(contract, setResults, setLoading);
+  };
 
   return (
     <main>
@@ -21,6 +25,13 @@ export default function Home() {
         analyze={analyze}
         contract={contract}
         setContract={setContract}
+      />
+      <ResultModal
+        closeModal={() => setIsModalOpen(false)}
+        isOpen={isModalOpen}
+        results={results}
+        loading={loading}
+        fixIssues={() => {}}
       />
     </main>
   );

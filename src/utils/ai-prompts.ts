@@ -11,7 +11,7 @@ export const analyzeContract = async (
   contract: string,
   setResults: any,
   setLoading: any,
-  auditSmartContract: any
+  auditSmartContract?: any
 ) => {
   setLoading(true);
   const chatCompletion = (await openai.chat.completions.create({
